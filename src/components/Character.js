@@ -14,5 +14,5 @@ const Character = ({ data }) => {
     </div>
   );
 }
-
+//initial commit
 export default Character;
