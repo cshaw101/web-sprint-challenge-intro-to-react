@@ -26,6 +26,12 @@ useEffect(() => {
   })
   .catch(err => console.error(err))
 },[])
+
+const getHomeworldName = (homeworldId) => {
+  const homeworld = planets.find(planet => planet.id === homeworldId);
+  return homeworld ? homeworld.name : 'Unknown';
+}
+
   
   // ❗ Create effects to fetch the data and put it in state
   return (
@@ -37,7 +43,7 @@ useEffect(() => {
         <Character
         key={p.id}
         name={p.name}
-        homeworld={planets.homeworld}
+        homeworld={getHomeworldName(p.homeworld)}
         />
       ))}
     </div>
