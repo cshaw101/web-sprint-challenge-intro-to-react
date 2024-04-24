@@ -14,15 +14,32 @@ function App() {
     axios.get(urlPeople)
           .then((res) => {
             setPeople(res.data)
+            console.log(people)
           })
           .catch(err => console.error(err))
   }, [])
+useEffect(() => {
+  axios.get(urlPlanets)
+  .then((res) => {
+    setPlanets(res.data)
+    console.log(planets)
+  })
+  .catch(err => console.error(err))
+},[])
+  
   // ❗ Create effects to fetch the data and put it in state
   return (
     <div>
       <h2>Star Wars Characters</h2>
       <p>See the README of the project for instructions on completing this challenge</p>
       {/* ❗ Map over the data in state, rendering a Character at each iteration */}
+      {people.map(p => (
+        <Character
+        key={p.id}
+        name={p.name}
+        homeworld={planets.homeworld}
+        />
+      ))}
     </div>
   )
 }
